@@ -1,3 +1,55 @@
 # Fluent Python
 
 I am reading the book fluent python, here I practice with it's concepts or check out the behaviour of its examples. And track my progres throughout the book.
+
+# Notes
+
+## Chapter 7: Functions as First-Class Objects:
+
+**Functions**: Functions in python are Objects. <br>
+**Higher-Order Functions**: A higher order function is a function that takes a function (callback) as an argument. Examples of this are: map() and filter(). <br>
+**Anonymous Fucntions**: Created with the ```lambda``` keyword. The body cannot cntain other Python statements (like ```while```, ```try```, etc.)
+
+### Nine Flavors of Callable Objects:
+
+| Flavor                 | Description                                                   |
+|------------------------|---------------------------------------------------------------|
+| User-defined functions | Created with ```def``` statements or ```lambda``` expressions |
+| Built-in functions | A function inplemented in C, like ```len``` or ```time.strftime```
+| Methods | Functions defined in the body of a class. |
+| Classes | When invoked, a class runs its ```__new__``` method to create an instance, then ```__init___``` to initialize it, and finally the instance is returned to the caller. Because the is no ```new``` operator in Python, calling a class is like calling a function. |
+| Class instances | If a class defines a ```__call__``` method, then its instances may be invoked as funtions. |
+| Generator functions | Functions that use the ```yield``` keyword in their body. When called, the return a generator object. |
+| Native coroutine functions | Functions or methods defined with ```async def```. When called, they return a coroutine object. |
+| Asychronous generator functions | Functions or methods defined with ```async def``` that have yield in their body. When called they return an asynchronous generator for use with ```async for```. |
+
+### Positional to Keyword-Only Parameters:
+
+To specify keyword-only arguments when defining a function, name them after the argument prefixed with *. If you don't want to support variable positional arguments but still want keyword-only arguments, put a * by itself in the signature like this:
+
+```
+def f(a, *, b):
+    return a, b
+
+>>>f(a, b=2)
+(1, 2)
+>>>f(1, 2)
+Traceback (most recent call last):
+  File "<stdin>", line 1 in <module>
+TypeError: f() takes 1 positional argument but 2 were given.
+```
+
+### Positional-Only Parameters:
+
+To define a function requiring positional-only parameters, use / in the parameter list.
+
+```
+def divmod(a, b, /):
+    return (a //b, a% b)
+```
+
+All arguments to the left of the / are positional-only. Afther the /, you may specifiy other arguments, which work as usual.
+
+## Chapter 9: Decorators and Closures
+
+**Decorator**: A decorator is a callable that takes another functions as an argument (the decorated function). A decorator may perform some processing with the decorated functions, and returns it or replaces it with another function or callable object. <br>
