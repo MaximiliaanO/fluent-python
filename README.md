@@ -52,4 +52,16 @@ All arguments to the left of the / are positional-only. Afther the /, you may sp
 
 ## Chapter 9: Decorators and Closures
 
-**Decorator**: A decorator is a callable that takes another functions as an argument (the decorated function). A decorator may perform some processing with the decorated functions, and returns it or replaces it with another function or callable object. <br>
+**Decorator**: A decorator is a callable that takes another functions as an argument (the decorated function). A decorator may perform some processing with the decorated functions, and returns it or replaces it with another function or callable object. <br><br>
+**Closures**: A closure is a function with an extended scope that encompasses variables referenced in the body of the function that are not global variables or local variables. Such variables come in from the local outer scope of an outer function that encompasses the other function. It does not matter if the function is anonymous or not, what matters is that it can access nonglobal variables that are defined outside of its body.
+
+### Variable Lookup logic:
+
+- If there is a global ```x``` declaration, ```x``` comes from and is assigned to the ```x``` global variable module.
+- If there is a ```nonlocal``` ```x``` declaration ```x``` comes from and is assigned to the ```x``` global variable module.
+- If ```x``` is a parameter or is assigned a value in the function body, then ```x``` is the local variable.
+- If ```x``` is referenced but is not assigned and is not a parameter:
+    - ```x``` will be looked up in the local scopes of the surrounding function bodies (nonlocal scopes).
+    - If not found in surrounding scopes, it will be read from the module global scope.
+    - If not found in the global scope, it will be read from ```__builtins__.__dict__```.
+
