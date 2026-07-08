@@ -4,6 +4,21 @@ I am reading the book fluent python, here I practice with it's concepts or check
 
 # Notes
 
+## Chapter 1: The Python Data Model:
+
+### Magic and Duner:
+
+Magic method is slang for special method. "Dunder" is short for "double underscore before and after".
+
+Special methods are used by the python intepreter. When you call ```len(my_object)``` the interpreter calls the ```my.object.__len__``` method you implemented.
+The interpreter takes a shortcut for built-in types like *list, str, bytearray,* or extensions like numpy arrays which are much faster because they are written inside a C struct (a C record type with named fields). If you need to invoke a special method it's usually better to call the related built-in function, i.e. ```len, iter, str```.
+
+Special methods are also use to define:
+
+- Emulation of numeric types: this means specifying the behavior of operators on the object (i.e. +, -, etc.) 
+- Defining the string representation of the object, i.e. when ```str()``` or ```repr()``` is called on the object.
+- Defining a boolean value of a custom type.
+
 ## Chapter 7: Functions as First-Class Objects:
 
 **Functions**: Functions in python are Objects. <br>
