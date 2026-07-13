@@ -2,6 +2,27 @@
 
 I am reading the book fluent python, here I practice with it's concepts or check out the behaviour of its examples. And track my progres throughout the book.
 
+## Concept summary to be implemented?
+
+```
+## Chapter 11 – A Pythonic Object
+
+### Main concepts
+- Data model
+- Dunder methods
+- Alternative constructors
+- Hashability
+
+### New things I learned
+- def creates a function object.
+- Classes are objects too.
+- __bytes__ defines a binary representation.
+
+### Things that surprised me
+- memoryview doesn't copy memory.
+- cls() makes subclasses work automatically.
+```
+
 # Notes
 
 ## Chapter 1: The Python Data Model:
