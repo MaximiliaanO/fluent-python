@@ -36,7 +36,7 @@ class Vector:
     @classmethod
     def frombytes(cls, octets):
         typecode = chr(octets[0])
-        memv = memoryview(octets[1:].cast(typecode))
+        memv = memoryview(octets[1:]).cast(typecode)
         return cls(memv)
     
     def __len__(self):
