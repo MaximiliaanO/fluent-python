@@ -27,11 +27,12 @@ I am reading the book fluent python, here I practice with it's concepts or check
 
 ## Chapter 1: The Python Data Model:
 
-### Magic and Duner:
+### Magic and Dunder:
 
 Magic method is slang for special method. "Dunder" is short for "double underscore before and after".
 
 Special methods are used by the python intepreter. When you call ```len(my_object)``` the interpreter calls the ```my.object.__len__``` method you implemented.
+
 The interpreter takes a shortcut for built-in types like *list, str, bytearray,* or extensions like numpy arrays which are much faster because they are written inside a C struct (a C record type with named fields). If you need to invoke a special method it's usually better to call the related built-in function, i.e. ```len, iter, str```.
 
 Special methods are also use to define:
@@ -39,6 +40,67 @@ Special methods are also use to define:
 - Emulation of numeric types: this means specifying the behavior of operators on the object (i.e. +, -, etc.) 
 - Defining the string representation of the object, i.e. when ```str()``` or ```repr()``` is called on the object.
 - Defining a boolean value of a custom type.
+
+## Chapter 2: An Array of Sequences:
+
+The standard library offers a rich selections of sequence types implemented in C.
+
+*Container Sequences*
+- Can hold different types, including nested containers. Some examples: ```list```, ```tuple```, and ```collections.deque```.
+- A container sequence holds references to the objects it contains, which may be of any type.
+
+*Flat Sequences*
+- Holds items of one simple type. Some examples: ```str```, ```bytes```, and ```array.array```.
+- A flat sequences stores the value of its contents in its own memory space, not as distinct python objects.
+
+Flat sequences are more compact, but they are limited to holding primitive machine values like bytes, integers and floats.
+
+**List Comprehensions**
+
+Provide a quick and readable way to create a sequence i.e.: ```[x for x in math_list]```
+List comprehensions are just as fast as using ```.map()``` or ```.filter()``` methods.
+
+**Generator Expressions**
+To initialize tupes, arrays and other types of sequences you can start from a list compression, but a generator expression saves memory becaue it yields items one by one using the iterator protocol instead of building the whole list just to feed another constructor.
+
+Generator expressions use the same syntax as listcomprehensions, but are enclosed in parentheses rather than brackets.
+
+**Tuple Usage**:
+- Tuple's can be used as immutable lists
+- Tuple's can also be used as records with no field names.
+
+
+**Tuple as records:**
+```python
+lax_coordinates = (33.9425, -118.408056)
+city, year, populations, change, area = ('Tokyo', 2003, 32_450, 0.66, 8014)
+```
+
+**Tuple as immutable lists:**
+
+Using tuples as immutable lists brings two key benefits:
+- Clarity: when you see a tuple in code you know its length will never change.
+- Performance: a tuple uses less memory than a list of the same length, and it allows Python to do some optimizations.
+
+We need to be aware that the immutability of a tupe only applies to the references contained in it. References cannot be replaced or deleted but if the reference is to a mutable object that mutable object can be changed. 
+
+**Sequence unpacking:**
+
+Parallel assignment:
+```
+lax_coordinates = (33.9425, -118.408056)
+latitude, longitude = lax_coordinates # unpacking
+
+t (20, 8)
+divmod(*t) # unpacking with *t
+```
+
+**List method .sort() versus sorted() Built-in**
+
+```list.sort()``` sorts the list in place doesn't create a new list.
+```sorted(list)``` creates a copy of the list and sorts it.
+
+
 
 ## Chapter 7: Functions as First-Class Objects:
 
