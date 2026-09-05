@@ -2,10 +2,10 @@
 
 from collections import namedtuple, abc
 
-Card = namedtuple('Card', ['rankk', 'suit'])
+Card = namedtuple('Card', ['rank', 'suit'])
 
-class FrendDeck2(abc.MutableSequence):
-    ranks = [str(n) for n in range(2, 11) + list('JQKA')]
+class FrenchDeck2(abc.MutableSequence):
+    ranks = [str(n) for n in range(2, 11)] + list('JQKA')
     suits = "spades diamonds clubs hearts".split()
 
     def __init__(self):
