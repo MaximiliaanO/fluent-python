@@ -163,3 +163,12 @@ All arguments to the left of the / are positional-only. Afther the /, you may sp
     - If not found in surrounding scopes, it will be read from the module global scope.
     - If not found in the global scope, it will be read from ```__builtins__.__dict__```.
 
+## Chapter 13:
+
+**Monkey Patching:** Changing a class or a module at runtime, without touching the source code.
+**Goose typing:** a runtime checking approach that leveragtes Abstract Base Classes (ABCs).
+
+Goose typing entails:
+- Subclassing from ABCs to make it explicit that you are implementing a previously defined interface.
+- Runtime type checking using ABCs instead of concrete classes as the second argument for isinstance and issubclass.
+
