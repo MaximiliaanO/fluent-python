@@ -165,10 +165,15 @@ All arguments to the left of the / are positional-only. Afther the /, you may sp
 
 ## Chapter 13:
 
+**Dynamic Protocol**: The informal protocols Python always had. Dynamic protocols are implicit, defined by convention, and described in the documentation. Python's most important dynamic protocols are supported by the interpreter itself, and are documented in the "Data Model" chapter of the Python language reference.
+**Static protocol**: A protocol as defined by PEP 544-Protocols: Structural subtyping (static duck typing), since Python 3.8 a static protocol has an explicit definition: a typing.Protocol subclass.
+
 **Monkey Patching:** Changing a class or a module at runtime, without touching the source code.
-**Goose typing:** a runtime checking approach that leveragtes Abstract Base Classes (ABCs).
+**Goose typing:** a runtime checking approach that leverages Abstract Base Classes (ABCs).
 
 Goose typing entails:
 - Subclassing from ABCs to make it explicit that you are implementing a previously defined interface.
 - Runtime type checking using ABCs instead of concrete classes as the second argument for isinstance and issubclass.
+
+if TYPE_CHECKING: # This only works when mypy runs and is false at runtime.
 

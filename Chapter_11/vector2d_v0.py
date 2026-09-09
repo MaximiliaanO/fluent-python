@@ -1,3 +1,4 @@
+from typing import SupportsComplex
 from array import array
 import math
 
@@ -39,7 +40,7 @@ class Vector2d:
     def __hash__(self):
         return hash((self.x, self.y))
     
-    def __abs__(self):
+    def __abs__(self) -> float:
         return math.hypot(self.x, self.y)
     
     def __bool__(self):
@@ -65,3 +66,11 @@ class Vector2d:
         typecode = chr(octets[0])
         memv = memoryview(octets[1:]).cast(typecode)
         return cls(*memv)
+
+    def __complex__(self) -> complex:
+        return complex(self.x, self.y)
+
+    @classmethod
+    def fromcomplex(cls, datum: SupportsComplex) -> Vector2d:
+        c = complex(datum)
+        return cls(c.real, c.imag)

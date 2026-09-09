@@ -20,4 +20,4 @@ class LottoBlower(Tombola):
         return bool(self._balls)
 
     def inspect(self):
-        return tuple(self._balls)
+        return tuple(self._balls) 
